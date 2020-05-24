@@ -1,0 +1,67 @@
+<view class="main" >
+
+
+  <!-- 公共头部 -->
+  <MyTitle></MyTitle>
+
+
+  <!-- 首页导航 -->
+  <view class="nav_wrap">
+    <scroll-view class="nav" scroll-x>
+      <view bindtap = "activeNav" data-index="{{index}}" class="nav_item {{index===currentIndexNav ? 'active':' '}}" wx:for="{{navList}}" wx:key="index">
+        {{item.text}}
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 轮播图 -->
+  <view class="slides">
+    <swiper autoplay indicator-dots circular>
+      <swiper-item class="" item-id="" wx:for="{{swiperList}}" wx:key="index">
+        <navigator >
+          <image class="" src="{{item.imgSrc}}" mode="widthFix" >
+            
+          </image>
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 视频列表 -->
+  <view class="video_wrap" hover-class="none" hover-stop-propagation="false">
+    <navigator  wx:for="{{videosList}}" wx:key="index" class="video_item" target="" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+      <!-- 图片 -->
+      <view class="video_img" hover-class="none" hover-stop-propagation="false">
+        <!-- 图片 -->
+        <image class="" src="{{item.imgSrc}}" mode="widthFix" lazy-load="false" binderror="" bindload="">
+          
+        </image>
+        <!-- 播放量 ....-->
+        <view class="video_info" hover-class="none" hover-stop-propagation="false">
+          <!-- 播放量 -->
+            <view class="play_count_wrap" hover-class="none" hover-stop-propagation="false">
+              <span class= "fa-play-circle-o" selectable="false" space="false" decode="false">
+                
+              </span>
+              <span class="play_count" selectable="false" space="false" decode="false">
+                {{item.playCount}}
+              </span>
+            </view>
+          <!-- 评论量 -->
+            <view class="comment_count_row" hover-class="none" hover-stop-propagation="false">
+              <span class="fa-camera-retro" selectable="false" space="false" decode="false">
+                
+              </span>
+              <span class="comment_count" selectable="false" space="false" decode="false">
+                {{item.commentCount}}
+              </span>
+            </view>
+        </view>
+      </view>
+      <!-- 标题 -->
+      <view class="video_title" hover-class="none" hover-stop-propagation="false">
+        {{item.desc}}
+      </view>
+    </navigator>
+  </view>
+</view>
